@@ -1,0 +1,11 @@
+{% for item in answer %}
+
+<h2> {{ item.lesson }}</h2>
+{% autoescape off %}
+<h3>{{ item.question }}</h3>
+{% endautoescape%}
+{% autoescape off %}
+<div>{{ item.answer }}</div>
+{% endautoescape%}
+
+{% endfor %}

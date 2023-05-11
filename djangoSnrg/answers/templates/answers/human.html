@@ -1,0 +1,11 @@
+{% for item in human %}
+
+<h2> {{ item.name }}</h2>
+{% autoescape off %}
+<h3>{{ item.height }}</h3>
+{% endautoescape%}
+{% autoescape off %}
+<div>{{ item.address }}</div>
+{% endautoescape%}
+
+{% endfor %}

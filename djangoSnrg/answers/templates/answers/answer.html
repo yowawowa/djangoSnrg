@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
+
 {% block sidebar %}
-SIDEBASR
+
 {% endblock %}
 
-
 {% block content %}
+{% comment %}
 {% for item in answer %}
 <h2> {{ item.lesson }}</h2>
 {% autoescape off %}
@@ -15,4 +16,8 @@ SIDEBASR
 {% endautoescape%}
 
 {% endfor %}
+{% endcomment %}
+<div class="ratio ratio-16x9">
+    <iframe src="https://docs.google.com/document/d/e/2PACX-1vRq_CZ7ZWYQlVL6rtjJYuR-1fb24usaMuDEXdie-TWgJYyLACmG1eanPS8LNo2DM3je8maDFnRNUwte/pub?embedded=true"></iframe>
+</div>
 {% endblock %}

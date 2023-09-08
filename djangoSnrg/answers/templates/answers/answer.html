@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block sidebar %}
-
+SIDEBASR
 {% endblock %}
-{% for item in answer %}
 
+
+{% block content %}
+{% for item in answer %}
 <h2> {{ item.lesson }}</h2>
 {% autoescape off %}
 <h3>{{ item.question }}</h3>
@@ -13,3 +15,4 @@
 {% endautoescape%}
 
 {% endfor %}
+{% endblock %}

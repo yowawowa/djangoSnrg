@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
 
 {% block sidebar %}
-USE
+USE LINKS
 {% endblock %}
 
 {% block content %}
-NAV
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Home</a>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'Answers' %}">Answers</a>
+    </li>
+    <li>
+        <a class="nav-link" href="{% url 'Human' %}">Human model</a>
+    </li>
+    <li>
+        <a class="nav-link" href="http://127.0.0.1:8000/admin" target=”_blank”>Admin</a>
+    </li>
+</ul>
 {% endblock %}

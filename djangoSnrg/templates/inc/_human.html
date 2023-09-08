@@ -1,0 +1,29 @@
+<div class="card mb-3">
+    {{ forloop.counter }}
+    <div class="card-header">
+        Human #{{ item.id }}
+    </div>
+    <div class="media" style="display:flex">
+        <div class="media-photo">
+            {% if item.photo %}
+            <img src="{{ item.photo.url }}" alt="Photo" class="mr-3" width="350">
+            {% else %}
+            <h6>no photo</h6>
+            {% endif %}
+        </div>
+        <div class="media-body">
+            <div class="card-body">
+                <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-info' %}">{{ item.name }}</h5>
+                {% autoescape off %}
+                <p class="card-text">{{ item.address|truncatewords:60|linebreaks }}</p>
+                <p class="card-text">{{ item.height|truncatewords:60|linebreaks }}</p>
+                <p class="card-text">{{ item.profession|truncatewords:60|linebreaks }}</p>
+                {% endautoescape%}
+                <a href="#" class="btn btn-primary">read more</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-body-secondary">
+        {{ item.created_at }}
+    </div>
+</div>

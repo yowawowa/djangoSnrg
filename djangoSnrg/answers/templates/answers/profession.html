@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 
 {% block title %}
-humans
+{{ profession.title }} :: {{ block.super }}
 {% endblock %}
 
 
+# TODO change to single sidebar template
 {% block sidebar %}
 {% include 'inc/_sidebarHM.html' %}
 {% endblock %}
 
-
 {% block content %}
-{% for item in human %}
+{% for item in humans %}
 {% include 'inc/_human.html' %}
 {% endfor %}
-
 {% endblock %}

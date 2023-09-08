@@ -13,6 +13,10 @@ def index(request):
     return render(request, 'news/index.html', context=context)
 
 
+def toc(request):
+    return render(request, 'news/toc.html', context=None)
+
+
 def getCategory(request, category_id):
     news = News.objects.filter(category_id=category_id)
     categories = Category.objects.all()

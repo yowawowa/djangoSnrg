@@ -28,8 +28,7 @@
                 <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-info' %}">{{ item.title }}</h5>
                 {% autoescape off %}
                 <p class="card-text">{{ item.content|truncatewords:60|linebreaks }}</p>
-                {% endautoescape%}
-                <a href="#" class="btn btn-primary">read more</a>
+                {% endautoescape%}                                       
             </div>
         </div>
     </div>

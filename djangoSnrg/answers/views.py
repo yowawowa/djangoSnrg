@@ -12,6 +12,6 @@ def answer(request):
 
 
 def human(request):
-    human = Human.objects.all()
-    context = {'human': human, }
+    humans = Human.objects.all()
+    context = {'human': humans, }
     return render(request, 'answers/human.html', context=context)

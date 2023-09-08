@@ -3,5 +3,5 @@ from answers.views import answer, human
 
 urlpatterns = [
     path('', answer, name='Answers'),
-    path('human', human, name='Human'),
+    path('humans', human, name='Human'),
 ]

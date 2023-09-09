@@ -13,7 +13,7 @@
 <div class="card mb-3">
     {{ forloop.counter }}
     <div class="card-header">
-        Category: <a href="{% url 'Category' item.category.pk %}">{{ item.category }}</a>
+        Category: <a href="{{ item.category.get_absolute_url }}">{{ item.category }}</a>
     </div>
     <div class="media" style="display:flex">
         <div class="media-photo">
@@ -29,7 +29,7 @@
                 {% autoescape off %}
                 <p class="card-text">{{ item.content|truncatewords:60|linebreaks }}</p>
                 {% endautoescape%}
-                <a href="#" class="btn btn-primary">read more</a>
+                <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more</a>
             </div>
         </div>
     </div>

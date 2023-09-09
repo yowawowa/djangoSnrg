@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Answer, Human, Profession
+from .forms import HumanForm
 
 
 # Create your views here.
@@ -28,3 +29,23 @@ def getProfession(request, profession_id):
         'profession': profession,
     }
     return render(request, 'answers/profession.html', context=context)
+
+
+def view_human(request, human_id):
+    human_item = get_object_or_404(Human, pk=human_id)
+    context = {
+        'human_item': human_item,
+    }
+    return render(request, 'answers/view_human.html', context=context)
+
+
+def add_human(request):
+    if request.method == 'POST':
+        form = HumanForm(request.POST)
+        if form.is_valid():
+            # news = News.objects.create(**form.cleaned_data)
+            news = form.save()
+            return redirect(human)
+    else:
+        form = HumanForm()
+    return render(request, 'answers/add_human.html', {'form': form})

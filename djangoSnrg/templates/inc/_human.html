@@ -17,9 +17,9 @@
                 {% autoescape off %}
                 <p class="card-text">{{ item.address|truncatewords:60|linebreaks }}</p>
                 <p class="card-text">{{ item.height|truncatewords:60|linebreaks }}</p>
-                <p class="card-text">{{ item.profession|truncatewords:60|linebreaks }}</p>
+                <p class="card-text"><a href="{{ item.profession.get_absolute_url }}">{{ item.profession }}</a></p>
                 {% endautoescape%}
-                <a href="#" class="btn btn-primary">read more</a>
+                <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more</a>
             </div>
         </div>
     </div>

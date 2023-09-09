@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }} :: {{ block.super }}
+{% endblock %}
+
+{% block sidebar %}
+{% include 'inc/_sidebarHM.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="card mb-3">
+    {{ forloop.counter }}
+    <div class="card-header">
+        Human #{{ item.id }}
+    </div>
+    <div class="media" style="display:flex">
+        <div class="media-photo">
+            {% if item.photo %}
+            <img src="{{ item.photo.url }}" alt="Photo" class="mr-3" width="350">
+            {% else %}
+            <h6>no photo</h6>
+            {% endif %}
+        </div>
+        <div class="media-body">
+            <div class="card-body">
+                <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-info' %}">{{ human_item.name }}</h5>
+                {% autoescape off %}
+                <p class="card-text">{{ human_item.address|truncatewords:60|linebreaks }}</p>
+                <p class="card-text">{{ human_item.height|truncatewords:60|linebreaks }}</p>
+                <p class="card-text"><a href="{{ human_item.profession.get_absolute_url }}">{{ human_item.profession }}</a></p>
+                {% endautoescape%}
+                <a href="javascript:window.history.back()" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-body-secondary">
+        {{ human_item.created_at }}
+    </div>
+</div>
+
+{% endblock %}

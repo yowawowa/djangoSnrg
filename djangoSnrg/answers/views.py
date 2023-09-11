@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Answer, Human, Profession
 from .forms import HumanForm
@@ -54,10 +55,12 @@ class HumansByProfession(ListView):
     def get_queryset(self):
         return Human.objects.filter(profession_id=self.kwargs['profession_id']).select_related('profession')
 
+
 class ViewHuman(DetailView):
     model = Human
     context_object_name = 'human_item'
     template_name = 'answers/view_human.html'
+
 
 def add_human(request):
     if request.method == 'POST':
@@ -69,3 +72,14 @@ def add_human(request):
     else:
         form = HumanForm()
     return render(request, 'answers/add_human.html', {'form': form})
+
+
+class AddHuman(CreateView, LoginRequiredMixin):
+    form_class = HumanForm
+    template_name = 'answers/add_human.html'
+    login_url = '/admin/'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = ('Add human')
+        return context

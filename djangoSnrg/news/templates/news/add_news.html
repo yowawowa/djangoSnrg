@@ -1,15 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Add news :: {{ block.super }}
+{{ title }} :: {{ block.super }}
 {% endblock %}
 
 {% block sidebar %}
-{% include 'inc/_sidebar.html' %}
+
 {% endblock %}
 
 {% block content %}
-<h1>Add news</h1>
 <form action="{% url 'Add_news' %}" method="post" style="width: 70vw;">
     {% csrf_token %}
     {{ form.as_p }}

@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import News, Category
 from .forms import NewsForm
 from django.views.generic import ListView, DetailView, CreateView
+from .utils import MyMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Create your views here.
@@ -14,13 +16,14 @@ from django.views.generic import ListView, DetailView, CreateView
 #     }
 #     return render(request, 'news/index.html', context=context)
 
-class HomeNews(ListView):
+class HomeNews(ListView, MyMixin):
     model = News
     context_object_name = 'news'
     template_name = 'news/home_news_list.html'
     extra_context = {
         'title': 'Main'
     }
+    mixin_group = 'hello world'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -61,7 +64,6 @@ class NewsByCategory(ListView):
 #     return render(request, 'news/category.html', context=context)
 
 
-
 class ViewNews(DetailView):
     model = News
     context_object_name = 'news_item'
@@ -77,13 +79,24 @@ class ViewNews(DetailView):
 #     return render(request, 'news/view_news.html', context=context)
 
 
-def add_news(request):
-    if request.method == 'POST':
-        form = NewsForm(request.POST)
-        if form.is_valid():
-            # news = News.objects.create(**form.cleaned_data)
-            news = form.save()
-            return redirect(news)
-    else:
-        form = NewsForm()
-    return render(request, 'news/add_news.html', {'form': form})
+class AddNews(CreateView, LoginRequiredMixin):
+    form_class = NewsForm
+    template_name = 'news/add_news.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = ('Add news')
+        return context
+
+    login_url = '/admin/'
+
+# def add_news(request):
+#     if request.method == 'POST':
+#         form = NewsForm(request.POST)
+#         if form.is_valid():
+#             # news = News.objects.create(**form.cleaned_data)
+#             news = form.save()
+#             return redirect(news)
+#     else:
+#         form = NewsForm()
+#     return render(request, 'news/add_news.html', {'form': form})

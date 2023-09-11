@@ -10,18 +10,22 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Home</a>
                 </li>
+                {% if request.user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'Add_news' %}">Add new</a>
                 </li>
+                {% endif %}
                 <li>
                     <a class="nav-link" href="{% url 'Answers' %}">Answers</a>
                 </li>
                 <li>
                     <a class="nav-link" href="{% url 'Human' %}">Human model</a>
                 </li>
+                {% if request.user.is_authenticated %}
                 <li>
                     <a class="nav-link" href="{% url 'Add_human' %}">Add human</a>
                 </li>
+                {% endif %}
                 <li>
                     <a class="nav-link" href="http://127.0.0.1:8000/admin" target=”_blank”>Admin</a>
                 </li>

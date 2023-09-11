@@ -7,19 +7,16 @@
 
 {% endblock %}
 
-<!--TODO google sheets sqlite integration-->
-{% block content %}
-{% comment %}
-{% for item in answer %}
-<h2> {{ item.lesson }}</h2>
-{% autoescape off %}
-<h3>{{ item.question }}</h3>
-{% endautoescape%}
-{% autoescape off %}
-<div>{{ item.answer }}</div>
-{% endautoescape%}
-{% endfor %}
-{% endcomment %}
+<!--{% block content %}-->
+<!--{% for item in answer %}-->
+<!--<h2> {{ item.lesson }}</h2>-->
+<!--{% autoescape off %}-->
+<!--<h3>{{ item.question }}</h3>-->
+<!--{% endautoescape%}-->
+<!--{% autoescape off %}-->
+<!--<div>{{ item.answer }}</div>-->
+<!--{% endautoescape%}-->
+<!--{% endfor %}-->
 
 <div class="ratio ratio-16x9">
     <iframe src="https://docs.google.com/document/d/e/2PACX-1vRq_CZ7ZWYQlVL6rtjJYuR-1fb24usaMuDEXdie-TWgJYyLACmG1eanPS8LNo2DM3je8maDFnRNUwte/pub?embedded=true"></iframe>

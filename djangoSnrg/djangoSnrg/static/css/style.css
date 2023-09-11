@@ -1,3 +1,22 @@
 body {
     background-color: #ccc;
 }
+
+.errorlist {
+    color: red;
+}
+
+.card {
+    width: 70vw;
+}
+
+.mt-3 {
+    margin-left: 0px;
+    width=80vw;
+}
+
+.badge {
+    width: 30px;
+    color: white;
+}
+

@@ -1,6 +1,3 @@
 {% load professions_tags %}
-<div class="list-group">
-    {{ arg1 }} {{ arg2 }}
-    {% get_list_professions as professions %}
-    {% showProfessions %}
-</div>
+{% get_list_professions as professions %}
+{% showProfessions %}

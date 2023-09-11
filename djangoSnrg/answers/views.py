@@ -37,17 +37,8 @@ class HumanList(ListView):
         return context
 
     def get_queryset(self):
-        return Human.objects.all()
+        return Human.objects.all().select_related('profession')
 
-
-def getProfession(request, profession_id):
-    humans = Human.objects.filter(profession_id=profession_id)
-    profession = Profession.objects.get(pk=profession_id)
-    context = {
-        'humans': humans,
-        'profession': profession,
-    }
-    return render(request, 'answers/profession.html', context=context)
 
 class HumansByProfession(ListView):
     model = Human
@@ -61,14 +52,7 @@ class HumansByProfession(ListView):
         return context
 
     def get_queryset(self):
-        return Human.objects.filter(profession_id=self.kwargs['profession_id'])
-
-def view_human(request, human_id):
-    human_item = get_object_or_404(Human, pk=human_id)
-    context = {
-        'human_item': human_item,
-    }
-    return render(request, 'answers/view_human.html', context=context)
+        return Human.objects.filter(profession_id=self.kwargs['profession_id']).select_related('profession')
 
 class ViewHuman(DetailView):
     model = Human

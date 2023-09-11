@@ -17,7 +17,7 @@ class Human(models.Model):
     profession = models.ForeignKey('Profession', on_delete=models.PROTECT, null=True, blank=True)
 
     def get_absolute_url(self):
-        return reverse_lazy('View_human', kwargs={'human_id': self.pk})
+        return reverse_lazy('View_human', kwargs={'pk': self.pk})
 
     class Meta:
         verbose_name = 'Human'
@@ -26,7 +26,7 @@ class Human(models.Model):
 
 class Profession(models.Model):
     title = models.CharField(max_length=40)
-
+    #TODO kwargs
     def get_absolute_url(self):
         return reverse_lazy('Profession', kwargs={'profession_id': self.pk})
 

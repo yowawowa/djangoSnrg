@@ -1,0 +1,22 @@
+body {
+    background-color: #120D31;
+    color: #DC9596;
+}
+
+ #header .module h2, .module caption, .inline-group h2{
+    background-color: #4A6D7C;
+
+ }
+ #branding h1, #branding h1 a:link, #branding h1 a:visited {
+    color: #DC9596;
+
+ }
+
+ div.breadcrumbs {
+    background: #4A6D7C;
+ }
+
+#content-main {
+    background-color: #120D31;
+    color: #DC9596;
+}

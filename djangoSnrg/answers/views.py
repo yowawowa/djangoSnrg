@@ -3,6 +3,15 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Answer, Human, Profession
 from .forms import HumanForm
 from django.views.generic import ListView, DetailView, CreateView
+from django.core.paginator import Paginator
+
+
+def tester(request):
+    objects = Human.objects.all()
+    paginator = Paginator(objects, 2)
+    page_num = request.GET.get('page', 1)
+    page_objects = paginator.get_page(page_num)
+    return render(request, 'answers/tester.html', {'page_obj': page_objects, })
 
 
 # Create your views here.
@@ -31,6 +40,7 @@ class HumanList(ListView):
     extra_context = {
         'title': 'Human'
     }
+    paginate_by = 3
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -46,6 +56,7 @@ class HumansByProfession(ListView):
     template_name = 'answers/profession.html'
     context_object_name = 'professions'
     allow_empty = False
+    paginate_by = 3
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)

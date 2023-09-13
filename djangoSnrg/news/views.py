@@ -1,9 +1,10 @@
+from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import News, Category
 from .forms import NewsForm
 from django.views.generic import ListView, DetailView, CreateView
-from .utils import MyMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
 
 
 # Create your views here.
@@ -16,14 +17,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 #     }
 #     return render(request, 'news/index.html', context=context)
 
-class HomeNews(ListView, MyMixin):
+class HomeNews(ListView):
     model = News
     context_object_name = 'news'
     template_name = 'news/home_news_list.html'
     extra_context = {
         'title': 'Main'
     }
-    mixin_group = 'hello world'
+    paginate_by = 3
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -43,6 +44,7 @@ class NewsByCategory(ListView):
     template_name = 'News/home_news_list.html'
     context_object_name = 'news'
     allow_empty = False
+    paginate_by = 3
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -90,6 +92,7 @@ class AddNews(CreateView, LoginRequiredMixin):
 
     login_url = '/admin/'
 
+
 # def add_news(request):
 #     if request.method == 'POST':
 #         form = NewsForm(request.POST)
@@ -100,3 +103,21 @@ class AddNews(CreateView, LoginRequiredMixin):
 #     else:
 #         form = NewsForm()
 #     return render(request, 'news/add_news.html', {'form': form})
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Registration successful')
+            return redirect('Login')
+        else:
+            messages.error(request, 'Registration error')
+    else:
+        form = UserCreationForm()
+    return render(request, 'news/register.html', {'form': form})
+
+
+def login(request):
+    return render(request, 'news/login.html')

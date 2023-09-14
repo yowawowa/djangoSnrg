@@ -8,7 +8,7 @@ Register:: {{ block.super }}
 {% endblock %}
 
 {% block content %}
-<h1>Register</h1>
+<h1>Registration</h1>
 <form method="post" class="reglog">
     {% csrf_token %}
     {{ form.as_p }}

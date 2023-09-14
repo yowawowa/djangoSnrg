@@ -22,7 +22,7 @@ def user_login(request):
     return render(request, 'login/login.html', {'form': form})
 
 
-# TODO username showing on navbar after logout
+
 def user_logout(request):
     logout(request)
     return redirect('Login')

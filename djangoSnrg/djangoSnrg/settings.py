@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'news',
     'answers',
     'reg',
+    'login',
 
 ]
 

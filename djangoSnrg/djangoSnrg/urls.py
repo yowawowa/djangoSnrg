@@ -24,6 +24,8 @@ urlpatterns = [
     path('news/', include('news.urls')),
     path('answers/', include('answers.urls')),
     path('registration/', include('reg.urls')),
+    path('login/', include('login.urls')),
+    path('logout/', include('login.urls')),
     path('', include('news.urls')),
 
 ]

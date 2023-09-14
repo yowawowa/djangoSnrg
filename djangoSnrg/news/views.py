@@ -119,5 +119,5 @@ class AddNews(CreateView, LoginRequiredMixin):
 #     return render(request, 'news/register.html', {'form': form})
 #
 #
-def login(request):
-    return render(request, 'reg/login.html')
+# def login(request):
+#     return render(request, 'news/login.html')

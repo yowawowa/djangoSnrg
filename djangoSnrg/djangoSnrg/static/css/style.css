@@ -39,3 +39,20 @@ body {
     width: 50%;
 }
 
+.title {
+    margin-left: 50%;
+}
+
+.navbar-brand {
+    margin-right: 3%;
+}
+
+.noauth {
+    margin-right: 2%;
+    display: flex;
+}
+
+.auth {
+    display: flex;
+    margin-left: 0;
+}

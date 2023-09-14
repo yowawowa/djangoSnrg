@@ -5,11 +5,11 @@ Add human :: {{ block.super }}
 {% endblock %}
 
 {% block sidebar %}
-{% include 'inc/_sidebar.html' %}
+
 {% endblock %}
 
 {% block content %}
-<h1>Add human</h1>
+
 <form action="{% url 'Add_human' %}" method="post">
     {% csrf_token %}
     {{ form.as_p }}

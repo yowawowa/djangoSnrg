@@ -17,11 +17,9 @@
 <div class="container mt-3">
     <h1>{{ title }}</h1>
     <div class="row">
-        {% cache 500 sidebar %}
         <div class="col-md-4">
             {% block sidebar %}SIDEBAR{% endblock %}
         </div>
-        {% endcache %}
         <div class="col-md-8">
         {% if messages %}
         {% for message in messages %}

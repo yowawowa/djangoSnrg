@@ -24,6 +24,9 @@ class News(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=150, db_index=True)
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse_lazy('Category', kwargs={'category_id': self.pk})
 

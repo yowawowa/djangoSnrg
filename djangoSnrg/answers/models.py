@@ -28,7 +28,11 @@ class Human(models.Model):
 class Profession(models.Model):
     title = models.CharField(max_length=40)
 
-    # TODO kwargs
+    def __str__(self):
+        return self.title
+
+
+
     def get_absolute_url(self):
         return reverse_lazy('Profession', kwargs={'profession_id': self.pk})
 

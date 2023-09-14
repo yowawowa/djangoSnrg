@@ -13,6 +13,8 @@ import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+import django.core.cache.backends.filebased
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
@@ -138,3 +140,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CASHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'location': os.path.join(BASE_DIR, 'django_cache'),
+    }
+}

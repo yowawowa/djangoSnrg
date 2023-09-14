@@ -1,8 +1,17 @@
 from django.contrib import admin
+from django import forms
 from django.utils.safestring import mark_safe
-
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from .models import Answer, Human, Profession
 
+
+
+class HumanAdminForm(forms.ModelForm):
+    description = forms.CharField(widget=CKEditorUploadingWidget)
+
+    class Meta:
+        model = Human
+        fields ='__all__'
 
 # Register your models here.
 class AnswersAdmin(admin.ModelAdmin):
@@ -12,11 +21,12 @@ class AnswersAdmin(admin.ModelAdmin):
 
 
 class HumansAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'get_photo', 'profession', 'height', 'address')
+    list_display = ('id', 'name', 'get_photo', 'profession', 'height', 'address','description')
     list_editable = ('profession', 'address')
     list_display_links = ('id', 'name',)
-    fields = ('name', 'height', 'photo', 'get_photo', 'profession', 'address')
+    fields = ('name', 'height', 'photo', 'get_photo', 'profession', 'address','description')
     readonly_fields = ('get_photo',)
+    form = HumanAdminForm
 
     def get_photo(self, obj):
         if obj.photo:

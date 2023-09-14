@@ -27,6 +27,8 @@ urlpatterns = [
     path('login/', include('login.urls')),
     path('logout/', include('login.urls')),
     path('', include('news.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('captcha/', include('captcha.urls')),
 
 ]
 

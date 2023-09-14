@@ -1,7 +1,6 @@
 {% load professions_tags  %}
 
 <div class="list-group">
-    {{ arg1 }} {{ arg2 }}
     {% for prof in professions %}
     <a href="{{ prof.get_absolute_url }}" class="list-group-item list-group-item-action">{{ prof.title }}
         <span class="badge bg-primary rounded-pill">{{ prof.cnt }}</span></a>

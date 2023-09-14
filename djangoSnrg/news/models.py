@@ -12,6 +12,9 @@ class News(models.Model):
     is_published = models.BooleanField(default=True)
     category = models.ForeignKey('Category', on_delete=models.PROTECT, null=True, blank=True)
 
+    def __str__(self):
+        return self.title
+
     def get_absolute_url(self):
         return reverse_lazy('View_news', kwargs={'pk': self.pk})
 
@@ -19,6 +22,8 @@ class News(models.Model):
         verbose_name = 'News'
         verbose_name_plural = 'News'
         ordering = ['-created_at']
+
+
 
 
 class Category(models.Model):

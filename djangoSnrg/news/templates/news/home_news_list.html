@@ -11,11 +11,16 @@
 {% block content %}
 {% for item in news %}
 <div class="card mb-3">
-    {{ forloop.counter }}
     <div class="card-header">
-        Category: <a href="{{ item.category.get_absolute_url }}">{{ item.category.title }}</a>
+        <span>
+            Category: <a href="{{ item.category.get_absolute_url }}">{{ item.category.title }}</a>
+        </span>
+        <a class="news-id">
+            id:{{ forloop.counter }}
+        </a>
     </div>
-    <div class="media" style="display:flex">
+
+    <div class="media media-list">
         <div class="media-photo">
             {% if item.photo %}
             <img src="{{ item.photo.url }}" alt="Photo" class="mr-3" width="350">
@@ -25,11 +30,14 @@
         </div>
         <div class="media-body">
             <div class="card-body">
-                <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-info' %}">{{ item.title }}</h5>
+                <h5 class="card-title card-title-news {% cycle 'text-success' 'text-danger' 'text-info' %}">
+                    {{ item.title }}</h5>
                 {% autoescape off %}
-                <p class="card-text">{{ item.content|truncatewords:60|linebreaks }}</p>
+                <p class="card-text">{{ item.content|truncatewords:100|linebreaks }}</p>
                 {% endautoescape%}
-                <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more</a>
+                <div class="news-btn">
+                    <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Read more</a>
+                </div>
             </div>
         </div>
     </div>

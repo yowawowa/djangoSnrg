@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-{{ title }} :: {{ block.super }}
+{{ news_item.title }} :: {{ block.super }}
 {% endblock %}
 
 {% block sidebar %}
@@ -14,8 +14,8 @@
     <div class="card-header">
         Category: <a href="{{ item.get_absolute_url }}">{{ news_item.category.title }}</a>
     </div>
-    <div class="media" style="display:flex">
-        <div class="media-photo">
+    <div class="media media-solo">
+        <div class="media-photo media-solo-photo">
             {% if news_item.photo %}
             <img src="{{ news_item.photo.url }}" alt="Photo" class="mr-3" width="350">
             {% else %}
@@ -24,7 +24,7 @@
         </div>
         <div class="media-body">
             <div class="card-body">
-                <h5 class="card-title {% cycle 'text-success' 'text-danger' 'text-info' %}">{{ news_item.title }}</h5>
+                <h5 class="card-title card-solo-title {% cycle 'text-success' 'text-danger' 'text-info' %}">{{ news_item.title }}</h5>
                 {% autoescape off %}
                 <p class="card-text">{{ news_item.content|linebreaks }}</p>
                 {% endautoescape%}

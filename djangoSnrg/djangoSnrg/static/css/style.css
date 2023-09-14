@@ -6,8 +6,19 @@ body {
     color: red;
 }
 
+.media-list {
+    position: relative;
+    display: flex;
+}
+
+.media-solo {
+    text-align: left;
+}
+.media-solo-photo{
+    text-align:center;
+}
 .card {
-    width: 70vw;
+    width: 65vw;
 }
 
 .mt-3 {
@@ -40,7 +51,7 @@ body {
 }
 
 .title {
-    margin-left: 50%;
+    text-align: center;
 }
 
 .navbar-brand {
@@ -48,11 +59,44 @@ body {
 }
 
 .noauth {
-    margin-right: 2%;
     display: flex;
+    margin-right: 2%;
 }
 
 .auth {
     display: flex;
     margin-left: 0;
+}
+
+.media-body {
+    margin-left: 3%;
+}
+
+.card-title-news {
+    text-align: center;
+}
+
+.news-btn {
+    text-align: center;
+}
+
+.card-footer {
+    text-align: center;
+}
+
+.media-photo {
+    padding: 1% 1% 1% 1%;
+}
+
+.card-solo-title{
+    text-align:center;
+}
+
+.news-id {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
 }

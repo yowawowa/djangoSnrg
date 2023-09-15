@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.contrib.auth.models import AnonymousUser
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout
 from .forms import UserLoginForm

@@ -1,7 +1,6 @@
 from django.urls import path
 # from news.views import index, getCategory, toc, view_news, add_news
 from news.views import HomeNews, NewsByCategory, toc, ViewNews, AddNews
-from django.views.decorators.cache import cache_page
 
 urlpatterns = [
     path('home', (HomeNews.as_view()), name='Home'),
